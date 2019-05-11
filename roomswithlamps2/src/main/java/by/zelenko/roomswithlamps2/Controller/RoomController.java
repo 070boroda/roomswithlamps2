@@ -14,25 +14,36 @@ import java.util.List;
 public class RoomController {
 
     private final List<Room> rooms;
+
     @Autowired
     public RoomController(List<Room> rooms) {
         this.rooms = rooms;
     }
 
     @GetMapping()
-    public ResponseEntity<List<Room>> getAllRooms(){
+    public ResponseEntity<List<Room>> getAllRooms() {
         return new ResponseEntity<>(rooms, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findOne(@PathVariable Long id){
-        for(Room room : rooms) {
+    public ResponseEntity<?> findOne(@PathVariable Long id) {
+        for (Room room : rooms) {
             if (room.getId() == id)
                 return new ResponseEntity<>(room, HttpStatus.OK);
         }
-            return new ResponseEntity<>("Not found " + id, HttpStatus.NOT_FOUND);
-        }
+        return new ResponseEntity<>("Not found " + id, HttpStatus.NOT_FOUND);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateStatus(@PathVariable Long id, @RequestBody Room room) {
+        for (Room roomDB : rooms) {
+            if (roomDB.getId() == id)
+                roomDB.setIsStatusOn(room.getIsStatusOn());
+        }
+                return new ResponseEntity<>(room, HttpStatus.OK);
+    }
+}
+
 
 
 
