@@ -15,14 +15,4 @@ public class Roomswithlamps2Application {
 		SpringApplication.run(Roomswithlamps2Application.class, args);
 	}
 
-	@Bean
-	public List<Room> createRooms(){
-		List<Room> rooms = new LinkedList<>();
-		rooms.add(new Room( 1L,true));
-		rooms.add(new Room( 2L,true));
-		rooms.add(new Room( 3L,true));
-		rooms.add(new Room( 4L,true));
-		rooms.add(new Room( 5L,true));
-		return rooms;
-	}
 }

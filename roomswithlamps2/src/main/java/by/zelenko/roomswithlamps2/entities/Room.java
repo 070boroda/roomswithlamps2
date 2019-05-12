@@ -5,14 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
+import java.io.Serializable;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Table(name = "rooms")
-public class Room {
+public class Room implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,5 +20,4 @@ public class Room {
     private Long id;
     @Column(name = "status_on")
     private Boolean isStatusOn;
-
 }
